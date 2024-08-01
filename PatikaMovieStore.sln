@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatikaMovieStore", "PatikaMovieStore\PatikaMovieStore.csproj", "{061F4514-32A3-4B03-8DDC-60251A0B6152}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatikaMovieStore.EntityLayer", "PatikaMovieStore.EntityLayer\PatikaMovieStore.EntityLayer.csproj", "{2F34EFF8-CD96-4467-A547-DD4A2CFB26D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatikaMovieStore.DtoLayer", "PatikaMovieStore.DtoLayer\PatikaMovieStore.DtoLayer.csproj", "{0AA1F433-B270-408A-87A6-CF347029E957}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatikaMovieStore.DataAccessLayer", "PatikaMovieStore.DataAccessLayer\PatikaMovieStore.DataAccessLayer.csproj", "{08151FE1-073F-413B-99FE-5CDE0974F17B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatikaMovieStore.BusinessLayer", "PatikaMovieStore.BusinessLayer\PatikaMovieStore.BusinessLayer.csproj", "{9F15AD2A-A73E-454A-9767-01D092F29D3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{061F4514-32A3-4B03-8DDC-60251A0B6152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{061F4514-32A3-4B03-8DDC-60251A0B6152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{061F4514-32A3-4B03-8DDC-60251A0B6152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{061F4514-32A3-4B03-8DDC-60251A0B6152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F34EFF8-CD96-4467-A547-DD4A2CFB26D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F34EFF8-CD96-4467-A547-DD4A2CFB26D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F34EFF8-CD96-4467-A547-DD4A2CFB26D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F34EFF8-CD96-4467-A547-DD4A2CFB26D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AA1F433-B270-408A-87A6-CF347029E957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AA1F433-B270-408A-87A6-CF347029E957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AA1F433-B270-408A-87A6-CF347029E957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AA1F433-B270-408A-87A6-CF347029E957}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08151FE1-073F-413B-99FE-5CDE0974F17B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08151FE1-073F-413B-99FE-5CDE0974F17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08151FE1-073F-413B-99FE-5CDE0974F17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08151FE1-073F-413B-99FE-5CDE0974F17B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F15AD2A-A73E-454A-9767-01D092F29D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F15AD2A-A73E-454A-9767-01D092F29D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F15AD2A-A73E-454A-9767-01D092F29D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F15AD2A-A73E-454A-9767-01D092F29D3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEF2799A-D398-4BDE-8E33-F48B0924447D}
+	EndGlobalSection
+EndGlobal
