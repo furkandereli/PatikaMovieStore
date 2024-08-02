@@ -4,6 +4,6 @@ namespace PatikaMovieStore.BusinessLayer.Abstract
 {
     public interface IAuthService
     {
-        Task<TokenResponseDto> AuthenticateAsync(string email, string password);
+        Task<string> AuthenticateAsync(string email,string password);
     }
 }

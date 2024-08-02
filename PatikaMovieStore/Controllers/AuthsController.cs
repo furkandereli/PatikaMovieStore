@@ -16,15 +16,20 @@ namespace PatikaMovieStore.Controllers
             _authService = authService;
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        [HttpPost("GetToken")]
+        public async Task<IActionResult> GetToken([FromBody] LoginDto loginDto)
         {
             var token = await _authService.AuthenticateAsync(loginDto.Email, loginDto.Password);
-            
-            if (token == null)
-                return Unauthorized();
 
-            return Ok(token);
+            if (token == null)
+                return Unauthorized("Invalid credentials");
+
+            var response = new ResponseTokenDto
+            {
+                Token = token
+            };
+
+            return Ok(response);
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using PatikaMovieStore.BusinessLayer.Abstract;
+using PatikaMovieStore.BusinessLayer.Token;
 using PatikaMovieStore.DataAccessLayer.Context;
-using PatikaMovieStore.DtoLayer.AuthDtos;
-using PatikaMovieStore.DtoLayer.CustomerDtos;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -15,53 +15,43 @@ namespace PatikaMovieStore.BusinessLayer.Concrete
     public class AuthService : IAuthService
     {
         private readonly MovieStoreContext _context;
-        private readonly IConfiguration _configuration;
+        private readonly JwtConfig _jwtConfig;
         private readonly IMapper _mapper;
 
-        public AuthService(MovieStoreContext context, IConfiguration configuration, IMapper mapper)
+        public AuthService(MovieStoreContext context, IOptions<JwtConfig> jwtConfig, IMapper mapper)
         {
             _context = context;
-            _configuration = configuration;
+            _jwtConfig = jwtConfig.Value;
             _mapper = mapper;
         }
 
-        public async Task<TokenResponseDto> AuthenticateAsync(string email, string password)
+        public async Task<string> AuthenticateAsync(string email, string password)
         {
             var customer = await _context.Customers.SingleOrDefaultAsync(c => c.Email == email && c.Password == password);
+
             if (customer == null)
                 return null;
 
-            var customerDto = _mapper.Map<CustomerDto>(customer);
+            // JWT Token creation
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_jwtConfig.Secret);
 
-            var token = GenerateToken(customerDto);
-
-            return new TokenResponseDto
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Token = token,
-                Expiration = DateTime.UtcNow.AddHours(1)
-            };
-        }
-
-        private string GenerateToken(CustomerDto customerDto)
-        {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            var claims = new[]
-            {
-                new Claim(JwtRegisteredClaimNames.Sub, customerDto.Email),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Role, customerDto.Role)
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                new Claim(ClaimTypes.NameIdentifier, customer.Id.ToString()),
+                new Claim(ClaimTypes.Email, customer.Email),
+                new Claim(ClaimTypes.Role, customer.Role)
+                }),
+                Expires = DateTime.UtcNow.AddMinutes(_jwtConfig.AccessTokenExpiration),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Issuer = _jwtConfig.Issuer,
+                Audience = _jwtConfig.Audience
             };
 
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.UtcNow.AddHours(1),
-                signingCredentials: credentials);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }

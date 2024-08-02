@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using PatikaMovieStore.DtoLayer.ActorDtos;
 using PatikaMovieStore.DtoLayer.ActorMovieDtos;
-using PatikaMovieStore.DtoLayer.AuthDtos;
 using PatikaMovieStore.DtoLayer.CustomerDtos;
 using PatikaMovieStore.DtoLayer.DirectorDtos;
 using PatikaMovieStore.DtoLayer.GenreDtos;
@@ -28,7 +27,6 @@ namespace PatikaMovieStore.Mapping
             CreateMap<Customer, CustomerDto>().ReverseMap();
             CreateMap<Customer, CreateCustomerDto>().ReverseMap();
             CreateMap<Customer, UpdateCustomerDto>().ReverseMap();
-            CreateMap<Customer, CustomerAuthDto>().ReverseMap();
 
             CreateMap<Director, DirectorDto>().ReverseMap();
             CreateMap<Director, CreateDirectorDto>().ReverseMap();
