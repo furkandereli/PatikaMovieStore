@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatikaMovieStore.DataAccess
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatikaMovieStore.BusinessLayer", "PatikaMovieStore.BusinessLayer\PatikaMovieStore.BusinessLayer.csproj", "{9F15AD2A-A73E-454A-9767-01D092F29D3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatikaMovieStore.Tests", "PatikaMovieStore.Tests\PatikaMovieStore.Tests.csproj", "{6679028F-7634-4F57-A62C-2D8127EA03F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9F15AD2A-A73E-454A-9767-01D092F29D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F15AD2A-A73E-454A-9767-01D092F29D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F15AD2A-A73E-454A-9767-01D092F29D3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6679028F-7634-4F57-A62C-2D8127EA03F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6679028F-7634-4F57-A62C-2D8127EA03F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6679028F-7634-4F57-A62C-2D8127EA03F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6679028F-7634-4F57-A62C-2D8127EA03F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
